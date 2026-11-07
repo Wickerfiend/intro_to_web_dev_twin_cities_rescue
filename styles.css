@@ -1,0 +1,184 @@
+/* ==========================================================
+   Twin Cities Animal Rescue: design system
+   Palette (4 main colors, plus white and tints of the ink color):
+     --ink    #12302b  deep green: text, dark sections, footer
+     --teal   #26dcad  brand teal from the logo: buttons, accents
+     --cream  #fbf8f3  warm page background
+     --green  #0b6b57  darker teal: links, labels, small accents
+   Font: Poppins only (system sans-serif as the fallback)
+   Approach: mobile-first. Base styles are for small screens;
+   min-width media queries add columns on larger screens.
+   ========================================================== */
+
+:root{
+  --ink:#12302b;
+  --teal:#26dcad;
+  --cream:#fbf8f3;
+  --green:#0b6b57;
+  --white:#ffffff;
+  --line:rgba(18,48,43,.18);
+  --radius:14px;
+  --gap:1.5rem;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:"Poppins",sans-serif;
+  font-size:1rem;
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--cream);
+}
+
+img{max-width:100%;height:auto;display:block}
+picture{display:block}
+figure{margin:0}
+p{margin:0 0 1em}
+ul,ol{margin:0;padding:0}
+a{color:var(--green);text-underline-offset:3px}
+a:hover{color:var(--ink)}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:4px}
+.dark :focus-visible,.site-footer :focus-visible{outline-color:var(--teal)}
+
+.skip{position:absolute;left:-999px;top:.5rem;background:var(--ink);color:var(--cream);padding:.6rem 1rem;border-radius:8px;z-index:100}
+.skip:focus{left:.5rem}
+
+/* ---------- type scale ---------- */
+h1,h2,h3{line-height:1.2;margin:0 0 .6em;font-weight:600}
+h1{font-size:2rem;letter-spacing:-.02em}
+h2{font-size:1.5rem;letter-spacing:-.01em}
+h3{font-size:1.15rem}
+.eyebrow{display:block;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.6rem}
+.lead{font-size:1.1rem;max-width:60ch}
+.hint{font-size:.9rem}
+
+/* ---------- layout containers ---------- */
+.wrap{width:100%;max-width:68rem;margin:0 auto;padding:0 1.25rem}
+section{padding:3rem 0}
+.band,.page-hero{background:var(--white);border-block:1px solid var(--line)}
+.page-hero{padding:2.5rem 0}
+.dark{background:var(--ink);color:var(--cream)}
+.dark h2{color:var(--cream)}
+.dark .eyebrow{color:var(--teal)}
+.section-head{max-width:62ch;margin-bottom:2rem}
+
+/* ---------- header and navigation (flexbox) ---------- */
+.site-header{background:var(--white);border-bottom:1px solid var(--line)}
+.site-header .wrap{display:flex;flex-direction:column;align-items:flex-start;gap:.5rem;padding-block:.75rem}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--ink);font-weight:600;line-height:1.2}
+.brand img{width:52px}
+.brand small{display:block;font-weight:400;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.25rem}
+nav a{display:block;padding:.45rem .9rem;border-radius:999px;color:var(--ink);font-weight:500;text-decoration:none}
+nav a:hover{background:var(--cream)}
+nav a[aria-current="page"]{background:var(--ink);color:var(--cream)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-block;background:var(--teal);color:var(--ink);font:inherit;font-weight:600;padding:.8rem 1.5rem;border:2px solid var(--teal);border-radius:999px;text-decoration:none;cursor:pointer;transition:background .15s,color .15s}
+.btn:hover{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.btn.ghost{background:transparent;border-color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--cream)}
+.btn-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.4rem}
+
+/* ---------- hero and two-column "split" (stacked on mobile) ---------- */
+.hero{padding:2rem 0 3rem}
+.hero .wrap,.split{display:flex;flex-direction:column;gap:2rem}
+.rounded,.hero img,figure img{border-radius:var(--radius)}
+figure img{width:100%;max-height:26rem;object-fit:cover}
+.hero img{box-shadow:0 18px 40px -18px rgba(18,48,43,.5)}
+.split.spaced{margin-top:3rem}
+figcaption{font-size:.9rem;margin-top:.7rem;padding-left:.8rem;border-left:3px solid var(--teal)}
+.dark figcaption{color:var(--cream)}
+
+/* ---------- impact statistics ---------- */
+.stats{list-style:none;display:flex;flex-wrap:wrap;gap:var(--gap)}
+.stats li{flex:1 1 100%;border-top:3px solid var(--teal);padding-top:1rem}
+.stats strong{display:block;font-size:2.4rem;line-height:1;font-weight:600;color:var(--teal)}
+.stats span{display:block;margin-top:.5rem}
+
+/* ---------- cards (flex-wrap rows) ---------- */
+.cards{list-style:none;display:flex;flex-wrap:wrap;gap:var(--gap)}
+.card{flex:1 1 100%;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem}
+.card p:last-child{margin-bottom:0}
+.tag{display:inline-block;font-size:.78rem;font-weight:600;color:var(--green);border:1px solid var(--green);padding:.1rem .7rem;border-radius:999px;margin-bottom:.7rem}
+.partners strong{display:block}
+
+/* ---------- adoption steps ---------- */
+.steps{list-style:none;display:flex;flex-wrap:wrap;gap:var(--gap);counter-reset:s}
+.steps li{flex:1 1 100%;counter-increment:s;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem}
+.steps li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:2.3rem;height:2.3rem;border-radius:50%;background:var(--ink);color:var(--cream);font-weight:600;margin-bottom:.8rem}
+.steps h3{font-size:1.05rem}
+
+/* ---------- audio message ---------- */
+.message{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;margin-bottom:2rem}
+.message h2{font-size:1.25rem}
+audio{width:100%;margin:.5rem 0 1rem}
+summary{cursor:pointer;font-weight:500;color:var(--green)}
+
+/* ---------- contact page layout ---------- */
+.contact-layout{display:flex;flex-direction:column;gap:2.5rem}
+.contact-info h2:not(:first-child){margin-top:2rem}
+.info-list{list-style:none}
+.info-list li{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line)}
+.info-list li:last-child{border-bottom:0}
+
+/* ---------- form ---------- */
+form{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:1.25rem}
+fieldset{border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.25rem;margin:0 0 1.25rem}
+legend{font-weight:600;padding:0 .5rem}
+.field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.field:last-child{margin-bottom:0}
+label{font-weight:500}
+.req{font-weight:600}
+input[type=text],input[type=email],select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--white);padding:.7rem .9rem;border:2px solid var(--ink);border-radius:10px}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--teal);outline-offset:1px}
+textarea{min-height:8rem;resize:vertical}
+.options{display:flex;flex-direction:column;gap:.4rem}
+.options label{display:flex;align-items:center;gap:.6rem;font-weight:400}
+.options input{width:1.2rem;height:1.2rem;accent-color:var(--green)}
+
+/* ---------- footer ---------- */
+.site-footer{background:var(--ink);color:var(--cream);padding:2.5rem 0 1.5rem;font-size:.95rem}
+.site-footer .wrap{display:flex;flex-direction:column;gap:1.5rem}
+.site-footer h2{font-size:1rem;color:var(--cream);margin-bottom:.5rem}
+.site-footer a{color:var(--cream)}
+.site-footer ul{list-style:none}
+.site-footer .legal{margin:0;padding-top:1.2rem;border-top:1px solid rgba(251,248,243,.3);font-size:.85rem}
+
+/* ==========================================================
+   Larger screens (min-width media queries)
+   ========================================================== */
+
+/* tablets: 40em = 640px */
+@media (min-width:40em){
+  h1{font-size:2.6rem}
+  h2{font-size:1.8rem}
+  .stats li{flex-basis:calc(50% - var(--gap)/2)}
+  .steps li,.cards.two .card,.cards.six .card{flex-basis:calc(50% - var(--gap)/2)}
+  form{padding:2rem}
+}
+
+/* laptops and desktops: 56em = 896px */
+@media (min-width:56em){
+  h1{font-size:3.2rem}
+  h2{font-size:2.1rem}
+  section{padding:4.5rem 0}
+  .page-hero{padding:3.5rem 0}
+  .site-header{position:sticky;top:0;z-index:50}
+  .site-header .wrap{flex-direction:row;align-items:center;justify-content:space-between}
+  .hero .wrap,.split,.contact-layout{flex-direction:row;align-items:center;gap:3.5rem}
+  .contact-layout{align-items:flex-start}
+  .hero .wrap>*,.split>*,.contact-layout>*{flex:1 1 0;min-width:0}
+  .hero .wrap>div{flex:1.1 1 0}
+  .stats li{flex-basis:calc(25% - var(--gap)*.75)}
+  .steps li{flex-basis:calc(25% - var(--gap)*.75)}
+  .cards.three .card,.cards.six .card{flex-basis:calc(33.333% - var(--gap)*.667)}
+  .site-footer .wrap{flex-direction:row;flex-wrap:wrap}
+  .site-footer .wrap>div{flex:1 1 12rem}
+  .site-footer .wrap>div:first-child{flex:1.5 1 16rem}
+  .site-footer .legal{flex-basis:100%}
+}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}

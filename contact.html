@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | Twin Cities Animal Rescue</title>
+<meta name="description" content="Share your interest in volunteering, fostering, or adopting with Twin Cities Animal Rescue.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="images/logo.png" alt="Twin Cities Animal Rescue logo: a teal cat and dog face forming a house">
+      <span>Twin Cities<small>Animal Rescue</small></span>
+    </a>
+    <nav aria-label="Main navigation"><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="contact.html" aria-current="page">Contact</a></li></ul></nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Get involved</span>
+    <h1>Let's find your way to help</h1>
+    <p class="lead">Tell us a little about yourself and a coordinator will reach out within three business days.</p>
+  </div>
+</div>
+
+<section aria-labelledby="msg-h">
+  <div class="wrap contact-layout">
+    <div class="contact-info">
+      <div class="message">
+        <h2 id="msg-h">A message from our volunteer coordinator</h2>
+        <audio controls preload="metadata" aria-label="Short message from the volunteer coordinator">
+          <source src="media/rescue-message.mp3" type="audio/mpeg">
+          <p>Your browser does not support the audio element. You can <a href="media/rescue-message.mp3">download the coordinator's message (MP3)</a> instead. In it, our coordinator thanks you for your interest and invites you to volunteer or foster with Twin Cities Animal Rescue.</p>
+        </audio>
+        <details>
+          <summary>Read a summary of this message</summary>
+          <p>Our volunteer coordinator welcomes you to Twin Cities Animal Rescue, thanks you for considering helping, and encourages you to fill out the form so the team can match you with a role that fits.</p>
+        </details>
+      </div>
+
+      <h2>Service area</h2>
+      <p>We serve Minneapolis, Saint Paul, and surrounding communities across the Twin Cities metro area, including Hennepin and Ramsey counties. Foster homes and volunteers within about 30 minutes of our office are the easiest to coordinate.</p>
+
+      <h2>Office hours</h2>
+      <ul class="info-list">
+        <li><span>Monday to Friday</span> <strong>10:00 a.m. to 5:00 p.m.</strong></li>
+        <li><span>Saturday (adoption days)</span> <strong>11:00 a.m. to 3:00 p.m.</strong></li>
+        <li><span>Sunday</span> <strong>Closed</strong></li>
+      </ul>
+      <p>Hours are in Central Time. Visits by appointment are welcome.</p>
+    </div>
+
+    <form action="#" method="post" aria-labelledby="form-h">
+      <h2 id="form-h">Volunteer, foster, or adoption interest</h2>
+      <p class="hint">Fields marked <span class="req" aria-hidden="true">*</span> are required.</p>
+
+      <fieldset>
+        <legend>Your details</legend>
+        <div class="field">
+          <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="name" name="name" autocomplete="name" required minlength="2" maxlength="80" pattern="[A-Za-z][A-Za-z .'\-]+" title="Use letters, spaces, periods, apostrophes, or hyphens (at least 2 characters).">
+        </div>
+        <div class="field">
+          <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" autocomplete="email" required maxlength="120">
+        </div>
+        <div class="field">
+          <label for="interest">Interest type <span class="req" aria-hidden="true">*</span></label>
+          <select id="interest" name="interest" required>
+            <option value="">Choose one</option>
+            <option value="volunteer">Volunteer</option>
+            <option value="foster">Foster</option>
+            <option value="adoption">Adoption information</option>
+            <option value="partner">Community partnership</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Availability <span class="hint">(select all that apply)</span></legend>
+        <div class="options">
+          <label><input type="checkbox" name="availability" value="weekday-morning"> Weekday mornings</label>
+          <label><input type="checkbox" name="availability" value="weekday-evening"> Weekday evenings</label>
+          <label><input type="checkbox" name="availability" value="weekend"> Weekends</label>
+          <label><input type="checkbox" name="availability" value="flexible"> Flexible / varies</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Experience with pets <span class="req" aria-hidden="true">*</span></legend>
+        <div class="options">
+          <label><input type="radio" name="experience" value="none" required> New to pet care</label>
+          <label><input type="radio" name="experience" value="some"> Some experience (my own pets)</label>
+          <label><input type="radio" name="experience" value="lots"> Experienced (fostering, training, or rescue work)</label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="message">Short message</label>
+        <textarea id="message" name="message" rows="5" cols="40" minlength="10" maxlength="600" placeholder="Tell us a bit about your home, schedule, or what you hope to do."></textarea>
+      </div>
+
+      <button class="btn" type="submit">Send my interest</button>
+    </form>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <h2>Twin Cities Animal Rescue</h2>
+      <p>A community nonprofit helping animals find safe homes and helping neighbors find a way to make a difference.</p>
+    </div>
+    <div>
+      <h2>Explore</h2>
+      <ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+    </div>
+    <div>
+      <h2>Get in touch</h2>
+      <ul>
+        <li><a href="mailto:hello@tcanimalrescue.example">hello@tcanimalrescue.example</a></li>
+        <li>(555) 010-0142</li>
+        <li>412 Maple Street, Suite 2<br>Twin Cities, MN 55400</li>
+      </ul>
+    </div>
+    <p class="legal">&copy; 2026 Twin Cities Animal Rescue. A community nonprofit. Sample content for a course project.</p>
+  </div>
+</footer>
+</body>
+</html>

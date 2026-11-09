@@ -75,12 +75,25 @@
       <h2 id="vol-h">Volunteer role descriptions</h2>
       <p>Choose the role that fits your interests and schedule. Training is provided for every position.</p>
     </div>
-    <div class="cards two">
+    <div id="role-tools" hidden>
+      <p>Filter by when you are free, then save the roles you like. We will remember your list and bring it to the volunteer form.</p>
+      <div class="chips" id="role-filters" role="group" aria-label="Filter volunteer roles by availability"></div>
+      <p class="status" id="role-status" role="status" aria-live="polite"></p>
+    </div>
+    <div class="cards two" id="role-list">
       <article class="card"><h3>Animal care companion</h3><p>Help with feeding, cleaning, and enrichment. Spend time with animals so they stay happy and social.</p><p><strong>Commitment:</strong> one 3-hour shift per week.</p></article>
       <article class="card"><h3>Dog walker</h3><p>Give shelter dogs exercise and fresh air, and help staff learn each dog's personality.</p><p><strong>Commitment:</strong> flexible, mornings and weekends.</p></article>
       <article class="card"><h3>Event ambassador</h3><p>Represent the rescue at adoption events and community fairs, greet guests, and share our story.</p><p><strong>Commitment:</strong> a few weekends each season.</p></article>
       <article class="card"><h3>Transport driver</h3><p>Safely move animals to vet visits, foster homes, and events across the metro area.</p><p><strong>Commitment:</strong> as your schedule allows.</p></article>
     </div>
+    <aside class="saved-panel" id="saved-panel" aria-labelledby="saved-h" hidden>
+      <h3 id="saved-h">My saved roles <span id="saved-count"></span></h3>
+      <ul id="saved-list"></ul>
+      <div class="btn-row">
+        <a class="btn" href="contact.html#interest-form">Continue to the volunteer form</a>
+        <button class="btn ghost" type="button" data-clear="all">Clear my list</button>
+      </div>
+    </aside>
     <div class="split spaced">
       <figure>
         <img src="images/rescue-volunteer.jpg" width="800" height="800" alt="A volunteer in a white VOLUNTEER t-shirt crouching beside a fluffy tan dog and gently holding its paw">
@@ -117,5 +130,8 @@
     <p class="legal">&copy; 2026 Twin Cities Animal Rescue. A community nonprofit. Sample content for a course project.</p>
   </div>
 </footer>
+<script src="js/storage.js"></script>
+<script src="js/data.js"></script>
+<script src="js/roles.js"></script>
 </body>
 </html>

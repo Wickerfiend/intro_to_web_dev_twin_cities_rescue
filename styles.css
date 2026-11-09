@@ -23,6 +23,9 @@
 
 *,*::before,*::after{box-sizing:border-box}
 
+/* Keep the hidden attribute working even on elements that set display (such as .field) */
+[hidden]{display:none!important}
+
 body{
   margin:0;
   font-family:"Poppins",sans-serif;
@@ -182,3 +185,52 @@ textarea{min-height:8rem;resize:vertical}
 }
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ==========================================================
+   Touchstone 4 additions: role finder, saved list, form feedback
+   (error red is a status color, used only for validation messages)
+   ========================================================== */
+:root{--error:#9b1c1c}
+
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+.chip{font:inherit;font-weight:500;color:var(--ink);background:var(--white);border:2px solid var(--ink);border-radius:999px;padding:.4rem 1rem;cursor:pointer}
+.chip:hover{background:var(--cream)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--cream)}
+.status{font-size:.9rem;margin-bottom:1.25rem}
+.empty{flex:1 1 100%;background:var(--white);border:1px dashed var(--ink);border-radius:var(--radius);padding:1.5rem;margin:0}
+
+.role-card{display:flex;flex-direction:column}
+.role-card .role-times{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.role-card .tag{margin-bottom:0}
+.role-save{align-self:flex-start;margin-top:auto}
+.role-save[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+
+.saved-panel{background:var(--white);border:2px solid var(--teal);border-radius:var(--radius);padding:1.25rem;margin-top:1.5rem}
+.saved-panel ul{list-style:none}
+.saved-panel li{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.5rem 0;border-bottom:1px solid var(--line)}
+.link-button{font:inherit;color:var(--green);background:none;border:0;padding:.25rem;text-decoration:underline;cursor:pointer}
+.link-button:hover{color:var(--ink)}
+
+.saved-note{background:var(--cream);border-left:4px solid var(--teal);border-radius:8px;padding:.75rem 1rem;margin-bottom:1.25rem}
+.saved-note p{margin:0}
+input[readonly]{background:var(--cream)}
+
+.error{color:var(--error);font-size:.9rem;font-weight:500;margin:.25rem 0 0}
+.error::before{content:"\26A0\00a0"}
+[aria-invalid="true"]{border-color:var(--error)!important}
+.options [aria-invalid="true"]{outline:2px solid var(--error);outline-offset:2px}
+.error-summary{border:2px solid var(--error);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.25rem}
+.error-summary h3{color:var(--error);font-size:1rem;margin-bottom:.4rem}
+.error-summary ul{padding-left:1.2rem}
+.error-summary a{color:var(--error)}
+.success{border:2px solid var(--green);background:var(--cream);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.25rem}
+.success h3{font-size:1rem;color:var(--green);margin-bottom:.3rem}
+.success p{margin:0}
+
+@media (min-width:40em){
+  /* keep a lone last role card the same width as the others */
+  #role-list .card{flex:0 1 calc(50% - var(--gap)/2)}
+}
+@media (min-width:56em){
+  #role-list .card{flex-basis:calc(50% - var(--gap)/2)}
+}

@@ -58,54 +58,78 @@
       <p>Hours are in Central Time. Visits by appointment are welcome.</p>
     </div>
 
-    <form action="#" method="post" aria-labelledby="form-h">
+    <form action="#" method="post" id="interest-form" aria-labelledby="form-h">
       <h2 id="form-h">Volunteer, foster, or adoption interest</h2>
-      <p class="hint">Fields marked <span class="req" aria-hidden="true">*</span> are required.</p>
+      <p class="hint">Fields marked <span class="req" aria-hidden="true">*</span> are required. We save your progress on this device in case you need to come back.</p>
+
+      <div class="error-summary" id="form-summary" role="alert" tabindex="-1" hidden>
+        <h3>Please fix these items before sending:</h3>
+        <ul id="summary-list"></ul>
+      </div>
+      <div class="success" id="form-success" role="status" tabindex="-1" hidden>
+        <h3>Interest form ready</h3>
+        <p id="success-text"></p>
+      </div>
+
+      <div class="saved-note" id="saved-roles-note" hidden>
+        <p><strong>You saved <span id="saved-roles-count">0</span> volunteer role(s)</strong> on the Services page. We added them below. <a href="services.html#volunteer">Change my list</a></p>
+      </div>
 
       <fieldset>
         <legend>Your details</legend>
         <div class="field">
           <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
-          <input type="text" id="name" name="name" autocomplete="name" required minlength="2" maxlength="80" pattern="[A-Za-z][A-Za-z .'\-]+" title="Use letters, spaces, periods, apostrophes, or hyphens (at least 2 characters).">
+          <input type="text" id="name" name="name" autocomplete="name" required minlength="2" maxlength="80" aria-describedby="name-error" pattern="[\p{L}][\p{L} .'\-]+" title="Use letters, spaces, periods, apostrophes, or hyphens (at least 2 characters).">
+          <p class="error" id="name-error" hidden></p>
         </div>
         <div class="field">
           <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
-          <input type="email" id="email" name="email" autocomplete="email" required maxlength="120">
+          <input type="email" id="email" name="email" autocomplete="email" required maxlength="120" aria-describedby="email-error">
+          <p class="error" id="email-error" hidden></p>
         </div>
         <div class="field">
           <label for="interest">Interest type <span class="req" aria-hidden="true">*</span></label>
-          <select id="interest" name="interest" required>
+          <select id="interest" name="interest" required aria-describedby="interest-error">
             <option value="">Choose one</option>
             <option value="volunteer">Volunteer</option>
             <option value="foster">Foster</option>
             <option value="adoption">Adoption information</option>
             <option value="partner">Community partnership</option>
           </select>
+          <p class="error" id="interest-error" hidden></p>
+        </div>
+        <div class="field" id="roles-field" hidden>
+          <label for="roles">Volunteer roles you saved</label>
+          <input type="text" id="roles" name="roles" readonly>
         </div>
       </fieldset>
 
-      <fieldset>
-        <legend>Availability <span class="hint">(select all that apply)</span></legend>
+      <fieldset aria-describedby="availability-error">
+        <legend>Availability <span class="req" aria-hidden="true">*</span> <span class="hint">(select all that apply)</span></legend>
         <div class="options">
           <label><input type="checkbox" name="availability" value="weekday-morning"> Weekday mornings</label>
           <label><input type="checkbox" name="availability" value="weekday-evening"> Weekday evenings</label>
           <label><input type="checkbox" name="availability" value="weekend"> Weekends</label>
           <label><input type="checkbox" name="availability" value="flexible"> Flexible / varies</label>
         </div>
+        <p class="error" id="availability-error" hidden></p>
       </fieldset>
 
-      <fieldset>
+      <fieldset aria-describedby="experience-error">
         <legend>Experience with pets <span class="req" aria-hidden="true">*</span></legend>
         <div class="options">
           <label><input type="radio" name="experience" value="none" required> New to pet care</label>
           <label><input type="radio" name="experience" value="some"> Some experience (my own pets)</label>
           <label><input type="radio" name="experience" value="lots"> Experienced (fostering, training, or rescue work)</label>
         </div>
+        <p class="error" id="experience-error" hidden></p>
       </fieldset>
 
       <div class="field">
         <label for="message">Short message</label>
-        <textarea id="message" name="message" rows="5" cols="40" minlength="10" maxlength="600" placeholder="Tell us a bit about your home, schedule, or what you hope to do."></textarea>
+        <textarea id="message" name="message" rows="5" cols="40" minlength="10" maxlength="600" aria-describedby="message-count message-error" placeholder="Tell us a bit about your home, schedule, or what you hope to do."></textarea>
+        <p class="hint" id="message-count">0 / 600 characters</p>
+        <p class="error" id="message-error" hidden></p>
       </div>
 
       <button class="btn" type="submit">Send my interest</button>
@@ -135,5 +159,8 @@
     <p class="legal">&copy; 2026 Twin Cities Animal Rescue. A community nonprofit. Sample content for a course project.</p>
   </div>
 </footer>
+<script src="js/storage.js"></script>
+<script src="js/data.js"></script>
+<script src="js/contact.js"></script>
 </body>
 </html>
